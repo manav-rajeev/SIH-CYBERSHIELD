@@ -1,3 +1,0 @@
-event_id,timestamp,asset_id,event_type,source,cve,message,severity
-CSV-001,2026-08-18T09:40:00Z,WEB-SRV-01,suspicious_http_request,198.51.100.88,CVE-2021-44228,Controlled CSV demo suspicious request,HIGH
-CSV-002,2026-08-18T09:41:00Z,API-GW-01,failed_login,203.0.113.45,,Repeated API admin login failures,MEDIUM

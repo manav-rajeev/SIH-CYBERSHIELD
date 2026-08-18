@@ -1,6 +1,0 @@
-[
-  {"asset_id":"WEB-SRV-01","name":"Public Web Server","owner":"Digital Services","environment":"Production","criticality":5,"internet_exposed":true,"tags":["web","customer-facing"]},
-  {"asset_id":"DB-SRV-01","name":"Customer Database","owner":"Data Team","environment":"Production","criticality":5,"internet_exposed":false,"tags":["database","pii"]},
-  {"asset_id":"HR-LAP-07","name":"HR Analyst Laptop","owner":"HR","environment":"Corporate","criticality":3,"internet_exposed":false,"tags":["endpoint"]},
-  {"asset_id":"API-GW-01","name":"API Gateway","owner":"Platform","environment":"Production","criticality":4,"internet_exposed":true,"tags":["api","edge"]}
-]

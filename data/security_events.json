@@ -1,0 +1,6 @@
+﻿[
+  {"event_id":"EVT-001","timestamp":"2026-08-18T09:35:00Z","asset_id":"WEB-SRV-01","event_type":"suspicious_http_request","source":"198.51.100.23","cve":"CVE-2021-44228","message":"Harmless demo request containing Log4j lookup pattern indicator.","severity":"HIGH"},
+  {"event_id":"EVT-002","timestamp":"2026-08-18T09:36:00Z","asset_id":"WEB-SRV-01","event_type":"exploit_attempt","source":"198.51.100.23","cve":"CVE-2021-44228","message":"Rule detected exploit attempt against demo web server.","severity":"CRITICAL"},
+  {"event_id":"EVT-003","timestamp":"2026-08-18T09:37:00Z","asset_id":"WEB-SRV-01","event_type":"suspicious_process_execution","source":"WEB-SRV-01","cve":"CVE-2021-44228","message":"Simulated suspicious child process after exploit attempt.","severity":"HIGH"},
+  {"event_id":"EVT-004","timestamp":"2026-08-18T09:38:00Z","asset_id":"HR-LAP-07","event_type":"failed_login","source":"203.0.113.9","cve":"","message":"Repeated failed login attempts in lab dataset.","severity":"MEDIUM"}
+]

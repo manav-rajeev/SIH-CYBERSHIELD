@@ -1,0 +1,6 @@
+﻿[
+  {"id":"VULN-001","cve":"CVE-2021-44228","title":"Apache Log4j Remote Code Execution","asset_id":"WEB-SRV-01","cvss":10.0,"kev":true,"exploit_activity":true,"status":"OPEN","description":"Controlled demo record for Log4Shell exposure on the public web server.","mitigation":"Upgrade Log4j, remove vulnerable JndiLookup class, and restrict outbound callbacks."},
+  {"id":"VULN-002","cve":"CVE-2023-34362","title":"MOVEit Transfer SQL Injection","asset_id":"API-GW-01","cvss":9.8,"kev":true,"exploit_activity":false,"status":"OPEN","description":"Sample high-impact edge service vulnerability.","mitigation":"Apply vendor patch and review transfer logs."},
+  {"id":"VULN-003","cve":"CVE-2022-30190","title":"Microsoft Support Diagnostic Tool RCE","asset_id":"HR-LAP-07","cvss":7.8,"kev":true,"exploit_activity":false,"status":"OPEN","description":"Sample endpoint vulnerability for prioritization contrast.","mitigation":"Apply Windows updates and disable vulnerable protocol handler."},
+  {"id":"VULN-004","cve":"CVE-2020-1472","title":"Netlogon Elevation of Privilege","asset_id":"DB-SRV-01","cvss":10.0,"kev":false,"exploit_activity":false,"status":"OPEN","description":"Critical CVSS but not internet exposed in this lab context.","mitigation":"Enforce secure RPC and patch domain controllers."}
+]

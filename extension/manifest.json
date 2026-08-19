@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "CyberShield Browser Security",
+  "version": "1.0.0",
+  "description": "CyberShield phishing and website risk analysis prototype.",
+  "permissions": [
+    "tabs",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "http://127.0.0.1:5000/*"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}

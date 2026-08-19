@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberShield</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+    <main class="app">
+
+        <header class="header">
+            <div class="shield">🛡️</div>
+
+            <div>
+                <h1>CyberShield</h1>
+                <p>Browser Security</p>
+            </div>
+        </header>
+
+        <section id="loading" class="loading">
+            <div class="spinner"></div>
+            <p>Analyzing website...</p>
+        </section>
+
+        <section id="result" class="hidden">
+
+            <div id="statusCard" class="status-card">
+                <div id="statusIcon" class="status-icon">✓</div>
+
+                <div>
+                    <div id="classification" class="classification">
+                        SAFE
+                    </div>
+
+                    <div class="score">
+                        Risk Score:
+                        <strong id="score">0</strong>
+                        <span>/100</span>
+                    </div>
+                </div>
+            </div>
+
+            <section class="url-section">
+                <div class="section-title">CURRENT WEBSITE</div>
+
+                <div id="currentUrl" class="url">
+                    Loading...
+                </div>
+            </section>
+
+            <section class="reasons-section">
+                <div class="section-title">ANALYSIS</div>
+
+                <div id="reasons"></div>
+            </section>
+
+            <section class="features-section">
+                <div class="section-title">KEY FEATURES</div>
+
+                <div id="features"></div>
+            </section>
+
+            <button id="reanalyze" class="reanalyze">
+                ↻ Re-analyze
+            </button>
+
+        </section>
+
+        <section id="error" class="error hidden">
+            <div class="error-title">⚠ Analysis unavailable</div>
+            <p id="errorMessage"></p>
+        </section>
+
+        <footer>
+            CyberShield • SIH 2026 Prototype
+        </footer>
+
+    </main>
+
+    <script src="popup.js"></script>
+</body>
+</html>

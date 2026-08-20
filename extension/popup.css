@@ -15,7 +15,9 @@ body {
     padding: 18px;
 }
 
-/* Header */
+/* =========================
+   HEADER
+   ========================= */
 
 .header {
     display: flex;
@@ -51,7 +53,9 @@ body {
     color: #94a3b8;
 }
 
-/* Loading */
+/* =========================
+   LOADING
+   ========================= */
 
 .loading {
     text-align: center;
@@ -79,7 +83,9 @@ body {
     }
 }
 
-/* Status */
+/* =========================
+   STATUS CARD
+   ========================= */
 
 .status-card {
     display: flex;
@@ -92,12 +98,12 @@ body {
     border: 1px solid #1f2937;
     border-radius: 14px;
 
-    margin-bottom: 14px;
+    margin-bottom: 12px;
 }
 
 .status-icon {
-    width: 44px;
-    height: 44px;
+    width: 48px;
+    height: 48px;
 
     display: flex;
     align-items: center;
@@ -105,8 +111,14 @@ body {
 
     border-radius: 50%;
 
-    font-size: 22px;
+    font-size: 23px;
     font-weight: bold;
+
+    flex-shrink: 0;
+}
+
+.status-content {
+    min-width: 0;
 }
 
 .status-safe {
@@ -125,36 +137,157 @@ body {
 }
 
 .classification {
-    font-size: 18px;
+    font-size: 19px;
     font-weight: bold;
 }
 
 .score {
     margin-top: 5px;
+
     font-size: 12px;
+
     color: #94a3b8;
 }
 
 .score strong {
     color: #f8fafc;
-    font-size: 16px;
+    font-size: 17px;
 }
 
 .score span {
     color: #64748b;
 }
 
-/* Sections */
+/* =========================
+   RISK BAR
+   ========================= */
+
+.risk-section {
+    padding: 12px 13px;
+
+    margin-bottom: 12px;
+
+    background: #111827;
+
+    border: 1px solid #1f2937;
+    border-radius: 12px;
+}
+
+.risk-header {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 8px;
+
+    font-size: 11px;
+
+    color: #94a3b8;
+}
+
+.risk-header strong {
+    color: #e5e7eb;
+    font-size: 11px;
+}
+
+.risk-bar {
+    width: 100%;
+    height: 8px;
+
+    overflow: hidden;
+
+    background: #1e293b;
+
+    border-radius: 10px;
+}
+
+.risk-fill {
+    width: 0%;
+    height: 100%;
+
+    border-radius: 10px;
+
+    transition: width 0.5s ease;
+}
+
+/* Risk levels */
+
+.risk-low {
+    background: #10b981;
+}
+
+.risk-medium {
+    background: #f59e0b;
+}
+
+.risk-high {
+    background: #f97316;
+}
+
+.risk-critical {
+    background: #ef4444;
+}
+
+/* =========================
+   SECURITY MESSAGE
+   ========================= */
+
+.security-message {
+    padding: 13px;
+
+    margin-bottom: 12px;
+
+    background: #111827;
+
+    border: 1px solid #1f2937;
+    border-radius: 12px;
+}
+
+.security-message strong {
+    display: block;
+
+    font-size: 13px;
+
+    color: #f8fafc;
+}
+
+.security-message p {
+    margin: 5px 0 0;
+
+    font-size: 11px;
+    line-height: 1.5;
+
+    color: #94a3b8;
+}
+
+/* Message states */
+
+.message-safe {
+    border-color: #065f46;
+}
+
+.message-warning {
+    border-color: #92400e;
+}
+
+.message-danger {
+    border-color: #991b1b;
+}
+
+/* =========================
+   SECTIONS
+   ========================= */
 
 .url-section,
 .reasons-section,
 .features-section {
-    margin-bottom: 14px;
+    margin-bottom: 12px;
 
     padding: 13px;
 
     background: #111827;
+
     border: 1px solid #1f2937;
+
     border-radius: 12px;
 }
 
@@ -178,7 +311,9 @@ body {
     color: #cbd5e1;
 }
 
-/* Reasons */
+/* =========================
+   REASONS
+   ========================= */
 
 .reason {
     display: flex;
@@ -188,17 +323,46 @@ body {
 
     font-size: 12px;
     line-height: 1.4;
+
+    border-bottom: 1px solid #1f2937;
+}
+
+.reason:last-child {
+    border-bottom: none;
 }
 
 .reason-icon {
     color: #f59e0b;
+
+    flex-shrink: 0;
 }
 
-/* Features */
+/* =========================
+   FEATURE GROUPS
+   ========================= */
+
+.feature-section-title {
+    margin-top: 10px;
+    margin-bottom: 5px;
+
+    padding-top: 5px;
+
+    font-size: 10px;
+    font-weight: bold;
+
+    color: #38bdf8;
+}
+
+.feature-section-title:first-child {
+    margin-top: 0;
+}
 
 .feature-row {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+
+    gap: 10px;
 
     padding: 5px 0;
 
@@ -217,10 +381,17 @@ body {
 
 .feature-value {
     color: #e5e7eb;
+
     font-weight: bold;
+
+    text-align: right;
+
+    word-break: break-word;
 }
 
-/* Button */
+/* =========================
+   BUTTON
+   ========================= */
 
 .reanalyze {
     width: 100%;
@@ -237,18 +408,27 @@ body {
     font-weight: bold;
 
     cursor: pointer;
+
+    transition: background 0.2s ease;
 }
 
 .reanalyze:hover {
     background: #1d4ed8;
 }
 
-/* Error */
+.reanalyze:active {
+    transform: translateY(1px);
+}
+
+/* =========================
+   ERROR
+   ========================= */
 
 .error {
     padding: 15px;
 
     background: #450a0a;
+
     border: 1px solid #7f1d1d;
 
     border-radius: 12px;
@@ -258,16 +438,21 @@ body {
 
 .error-title {
     font-weight: bold;
+
     margin-bottom: 6px;
 }
 
 .error p {
     margin: 0;
+
     font-size: 12px;
+
     line-height: 1.5;
 }
 
-/* Footer */
+/* =========================
+   FOOTER
+   ========================= */
 
 footer {
     margin-top: 16px;
@@ -275,8 +460,13 @@ footer {
     text-align: center;
 
     font-size: 10px;
+
     color: #475569;
 }
+
+/* =========================
+   UTILITY
+   ========================= */
 
 .hidden {
     display: none !important;

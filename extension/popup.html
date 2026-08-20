@@ -26,10 +26,12 @@
 
         <section id="result" class="hidden">
 
+            <!-- MAIN SECURITY STATUS -->
             <div id="statusCard" class="status-card">
+
                 <div id="statusIcon" class="status-icon">✓</div>
 
-                <div>
+                <div class="status-content">
                     <div id="classification" class="classification">
                         SAFE
                     </div>
@@ -40,37 +42,85 @@
                         <span>/100</span>
                     </div>
                 </div>
+
             </div>
 
+            <!-- RISK BAR -->
+            <section class="risk-section">
+
+                <div class="risk-header">
+                    <span>Risk Level</span>
+                    <strong id="riskLabel">LOW</strong>
+                </div>
+
+                <div class="risk-bar">
+                    <div id="riskFill" class="risk-fill"></div>
+                </div>
+
+            </section>
+
+            <!-- SECURITY MESSAGE -->
+            <section id="securityMessage" class="security-message">
+                <strong id="securityMessageTitle">
+                    Website appears safe
+                </strong>
+
+                <p id="securityMessageText">
+                    No significant security indicators were detected.
+                </p>
+            </section>
+
+            <!-- CURRENT WEBSITE -->
             <section class="url-section">
-                <div class="section-title">CURRENT WEBSITE</div>
+
+                <div class="section-title">
+                    CURRENT WEBSITE
+                </div>
 
                 <div id="currentUrl" class="url">
                     Loading...
                 </div>
+
             </section>
 
+            <!-- ANALYSIS -->
             <section class="reasons-section">
-                <div class="section-title">ANALYSIS</div>
+
+                <div class="section-title">
+                    DETECTED INDICATORS
+                </div>
 
                 <div id="reasons"></div>
+
             </section>
 
+            <!-- FEATURES -->
             <section class="features-section">
-                <div class="section-title">KEY FEATURES</div>
+
+                <div class="section-title">
+                    TECHNICAL ANALYSIS
+                </div>
 
                 <div id="features"></div>
+
             </section>
 
+            <!-- ACTION -->
             <button id="reanalyze" class="reanalyze">
                 ↻ Re-analyze
             </button>
 
         </section>
 
+        <!-- ERROR -->
         <section id="error" class="error hidden">
-            <div class="error-title">⚠ Analysis unavailable</div>
+
+            <div class="error-title">
+                ⚠ Analysis unavailable
+            </div>
+
             <p id="errorMessage"></p>
+
         </section>
 
         <footer>

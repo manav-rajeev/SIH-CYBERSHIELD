@@ -30,6 +30,10 @@ function showError(message) {
 }
 
 
+/* =========================
+   STATUS
+   ========================= */
+
 function setStatus(classification) {
     const card = document.getElementById("statusCard");
     const icon = document.getElementById("statusIcon");
@@ -71,6 +75,126 @@ function setStatus(classification) {
 }
 
 
+/* =========================
+   RISK LEVEL
+   ========================= */
+
+function getRiskLevel(score) {
+    if (score < 40) {
+        return "LOW";
+    }
+
+    if (score < 60) {
+        return "MEDIUM";
+    }
+
+    if (score < 80) {
+        return "HIGH";
+    }
+
+    return "CRITICAL";
+}
+
+
+function updateRiskDisplay(score) {
+    const riskLabel = document.getElementById("riskLabel");
+    const riskFill = document.getElementById("riskFill");
+
+    const riskLevel = getRiskLevel(score);
+
+    riskLabel.textContent = riskLevel;
+
+    riskFill.style.width = `${Math.min(Math.max(score, 0), 100)}%`;
+
+    riskFill.classList.remove(
+        "risk-low",
+        "risk-medium",
+        "risk-high",
+        "risk-critical"
+    );
+
+    if (riskLevel === "LOW") {
+        riskFill.classList.add("risk-low");
+
+    } else if (riskLevel === "MEDIUM") {
+        riskFill.classList.add("risk-medium");
+
+    } else if (riskLevel === "HIGH") {
+        riskFill.classList.add("risk-high");
+
+    } else {
+        riskFill.classList.add("risk-critical");
+    }
+}
+
+
+/* =========================
+   SECURITY MESSAGE
+   ========================= */
+
+function updateSecurityMessage(score, classification) {
+    const messageBox =
+        document.getElementById("securityMessage");
+
+    const messageTitle =
+        document.getElementById("securityMessageTitle");
+
+    const messageText =
+        document.getElementById("securityMessageText");
+
+    messageBox.classList.remove(
+        "message-safe",
+        "message-warning",
+        "message-danger"
+    );
+
+    if (score < 40 && classification === "SAFE") {
+
+        messageTitle.textContent =
+            "✓ Website appears safe";
+
+        messageText.textContent =
+            "No significant security indicators were detected.";
+
+        messageBox.classList.add("message-safe");
+
+    } else if (score < 60) {
+
+        messageTitle.textContent =
+            "⚠ Proceed with caution";
+
+        messageText.textContent =
+            "Some potentially suspicious indicators were detected. Review the analysis below.";
+
+        messageBox.classList.add("message-warning");
+
+    } else if (score < 80) {
+
+        messageTitle.textContent =
+            "⚠ Potential security risk";
+
+        messageText.textContent =
+            "Multiple suspicious indicators were detected. Avoid entering sensitive information until the website is verified.";
+
+        messageBox.classList.add("message-warning");
+
+    } else {
+
+        messageTitle.textContent =
+            "🚨 High-risk website";
+
+        messageText.textContent =
+            "CyberShield detected multiple indicators associated with potentially malicious or phishing activity.";
+
+        messageBox.classList.add("message-danger");
+    }
+}
+
+
+/* =========================
+   REASONS
+   ========================= */
+
 function renderReasons(reasons) {
     const container = document.getElementById("reasons");
 
@@ -78,21 +202,31 @@ function renderReasons(reasons) {
 
     if (!reasons || reasons.length === 0) {
         const row = document.createElement("div");
+
         row.className = "reason";
-        row.textContent = "No significant indicators detected.";
+
+        row.textContent =
+            "No significant indicators detected.";
+
         container.appendChild(row);
+
         return;
     }
 
     reasons.forEach(reason => {
+
         const row = document.createElement("div");
+
         row.className = "reason";
 
         const icon = document.createElement("span");
+
         icon.className = "reason-icon";
+
         icon.textContent = "⚠";
 
         const text = document.createElement("span");
+
         text.textContent = reason;
 
         row.appendChild(icon);
@@ -103,6 +237,10 @@ function renderReasons(reasons) {
 }
 
 
+/* =========================
+   FEATURE DISPLAY
+   ========================= */
+
 function formatName(name) {
     return name
         .replaceAll("_", " ")
@@ -111,10 +249,16 @@ function formatName(name) {
 
 
 function renderFeatures(features, title = "URL Analysis") {
-    const container = document.getElementById("features");
 
-    const heading = document.createElement("div");
-    heading.className = "feature-section-title";
+    const container =
+        document.getElementById("features");
+
+    const heading =
+        document.createElement("div");
+
+    heading.className =
+        "feature-section-title";
+
     heading.textContent = title;
 
     container.appendChild(heading);
@@ -133,20 +277,34 @@ function renderFeatures(features, title = "URL Analysis") {
     ];
 
     importantFeatures.forEach(key => {
+
         if (!features || !(key in features)) {
             return;
         }
 
-        const row = document.createElement("div");
-        row.className = "feature-row";
+        const row =
+            document.createElement("div");
 
-        const name = document.createElement("span");
-        name.className = "feature-name";
-        name.textContent = formatName(key);
+        row.className =
+            "feature-row";
 
-        const value = document.createElement("span");
-        value.className = "feature-value";
-        value.textContent = String(features[key]);
+        const name =
+            document.createElement("span");
+
+        name.className =
+            "feature-name";
+
+        name.textContent =
+            formatName(key);
+
+        const value =
+            document.createElement("span");
+
+        value.className =
+            "feature-value";
+
+        value.textContent =
+            String(features[key]);
 
         row.appendChild(name);
         row.appendChild(value);
@@ -157,11 +315,18 @@ function renderFeatures(features, title = "URL Analysis") {
 
 
 function renderWebsiteFeatures(features) {
-    const container = document.getElementById("features");
 
-    const heading = document.createElement("div");
-    heading.className = "feature-section-title";
-    heading.textContent = "Website Analysis";
+    const container =
+        document.getElementById("features");
+
+    const heading =
+        document.createElement("div");
+
+    heading.className =
+        "feature-section-title";
+
+    heading.textContent =
+        "Website Analysis";
 
     container.appendChild(heading);
 
@@ -179,24 +344,38 @@ function renderWebsiteFeatures(features) {
     ];
 
     importantFeatures.forEach(key => {
+
         if (!features || !(key in features)) {
             return;
         }
 
-        const row = document.createElement("div");
-        row.className = "feature-row";
+        const row =
+            document.createElement("div");
 
-        const name = document.createElement("span");
-        name.className = "feature-name";
-        name.textContent = formatName(key);
+        row.className =
+            "feature-row";
 
-        const value = document.createElement("span");
-        value.className = "feature-value";
+        const name =
+            document.createElement("span");
+
+        name.className =
+            "feature-name";
+
+        name.textContent =
+            formatName(key);
+
+        const value =
+            document.createElement("span");
+
+        value.className =
+            "feature-value";
 
         if (typeof features[key] === "boolean") {
-            value.textContent = features[key] ? "Yes" : "No";
+            value.textContent =
+                features[key] ? "Yes" : "No";
         } else {
-            value.textContent = String(features[key]);
+            value.textContent =
+                String(features[key]);
         }
 
         row.appendChild(name);
@@ -207,106 +386,156 @@ function renderWebsiteFeatures(features) {
 }
 
 
+/* =========================
+   RESULT
+   ========================= */
+
 function renderResult(result) {
-    document.getElementById("loading").classList.add("hidden");
-    document.getElementById("error").classList.add("hidden");
-    document.getElementById("result").classList.remove("hidden");
 
-    document.getElementById("score").textContent = result.score;
+    document.getElementById("loading")
+        .classList.add("hidden");
 
-    document.getElementById("currentUrl").textContent = result.url;
+    document.getElementById("error")
+        .classList.add("hidden");
+
+    document.getElementById("result")
+        .classList.remove("hidden");
+
+    const score =
+        Number(result.score) || 0;
+
+    document.getElementById("score")
+        .textContent = score;
+
+    document.getElementById("currentUrl")
+        .textContent = result.url;
 
     setStatus(result.classification);
 
+    updateRiskDisplay(score);
+
+    updateSecurityMessage(
+        score,
+        result.classification
+    );
+
     renderReasons(result.reasons);
 
-    const featuresContainer = document.getElementById("features");
+    const featuresContainer =
+        document.getElementById("features");
+
     featuresContainer.innerHTML = "";
 
-    // Phase 5: URL features
     renderFeatures(
         result.url_features || {},
         "URL Analysis"
     );
 
-    // Phase 5: Website/HTML features
     renderWebsiteFeatures(
         result.website_features || {}
     );
 }
 
 
+/* =========================
+   ANALYZE CURRENT WEBSITE
+   ========================= */
+
 async function analyzeCurrentWebsite() {
+
     showLoading();
 
     try {
-        const tab = await getCurrentTab();
+
+        const tab =
+            await getCurrentTab();
 
         if (!tab || !tab.url) {
+
             throw new Error(
                 "Unable to read the current website URL."
             );
         }
 
-        /*
-         * Ask the content script for the current page's
-         * URL and HTML structure.
-         */
         let pageData = null;
 
         try {
-            pageData = await new Promise((resolve, reject) => {
-                chrome.tabs.sendMessage(
-                    tab.id,
-                    {
-                        type: "GET_PAGE_DATA"
-                    },
-                    response => {
-                        if (chrome.runtime.lastError) {
-                            reject(
-                                new Error(
-                                    chrome.runtime.lastError.message
-                                )
-                            );
-                            return;
-                        }
 
-                        resolve(response);
-                    }
-                );
-            });
+            pageData =
+                await new Promise((resolve, reject) => {
+
+                    chrome.tabs.sendMessage(
+                        tab.id,
+                        {
+                            type: "GET_PAGE_DATA"
+                        },
+                        response => {
+
+                            if (chrome.runtime.lastError) {
+
+                                reject(
+                                    new Error(
+                                        chrome.runtime
+                                            .lastError
+                                            .message
+                                    )
+                                );
+
+                                return;
+                            }
+
+                            resolve(response);
+                        }
+                    );
+                });
+
         } catch {
-            // Some browser/system pages do not allow content scripts.
-            // Fall back to URL-only analysis.
+
             pageData = {
                 url: tab.url,
                 html: ""
             };
         }
 
-        const response = await fetch(API_URL, {
-            method: "POST",
 
-            headers: {
-                "Content-Type": "application/json"
-            },
+        const response =
+            await fetch(API_URL, {
 
-            body: JSON.stringify({
-                url: pageData?.url || tab.url,
-                html: pageData?.html || ""
-            })
-        });
+                method: "POST",
+
+                headers: {
+                    "Content-Type":
+                        "application/json"
+                },
+
+                body: JSON.stringify({
+
+                    url:
+                        pageData?.url ||
+                        tab.url,
+
+                    html:
+                        pageData?.html ||
+                        ""
+
+                })
+            });
+
 
         if (!response.ok) {
+
             let message =
                 "The CyberShield API returned an error.";
 
             try {
-                const data = await response.json();
+
+                const data =
+                    await response.json();
 
                 if (data.error) {
                     message = data.error;
                 }
+
             } catch {
                 // Ignore invalid error responses.
             }
@@ -314,11 +543,14 @@ async function analyzeCurrentWebsite() {
             throw new Error(message);
         }
 
-        const result = await response.json();
+
+        const result =
+            await response.json();
 
         renderResult(result);
 
     } catch (error) {
+
         console.error(
             "CyberShield analysis error:",
             error
@@ -331,16 +563,25 @@ async function analyzeCurrentWebsite() {
 }
 
 
-document.addEventListener("DOMContentLoaded", () => {
-    analyzeCurrentWebsite();
+/* =========================
+   INITIALIZE
+   ========================= */
 
-    const reanalyze =
-        document.getElementById("reanalyze");
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
 
-    if (reanalyze) {
-        reanalyze.addEventListener(
-            "click",
-            analyzeCurrentWebsite
-        );
+        analyzeCurrentWebsite();
+
+        const reanalyze =
+            document.getElementById("reanalyze");
+
+        if (reanalyze) {
+
+            reanalyze.addEventListener(
+                "click",
+                analyzeCurrentWebsite
+            );
+        }
     }
-});
+);

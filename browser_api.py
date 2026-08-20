@@ -3,6 +3,10 @@
 from flask import Flask, jsonify, request
 
 from phishing.website_detector import analyze_website
+from services.detection_history_service import (
+    get_detection_history,
+    record_detection,
+)
 
 app = Flask(__name__)
 
@@ -29,7 +33,19 @@ def analyze_url():
     except ValueError as exc:
         return jsonify({"error": str(exc)}), 400
 
+    # Store the detection in SQLite history.
+    record = record_detection(result)
+
+    result["detection_id"] = record["id"]
+    result["detected_at"] = record["timestamp"]
+
     return jsonify(result)
+
+
+@app.get("/history")
+def detection_history():
+    """Return recent browser detection history."""
+    return jsonify(get_detection_history(limit=50))
 
 
 @app.get("/health")
